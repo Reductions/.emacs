@@ -85,11 +85,18 @@
 
 (require 'use-package)
 
+(use-package use-package-chords
+  :ensure t
+  :config (key-chord-mode 1))
+
 ;; become evil
 (use-package evil
   :ensure t
   :config
-  (evil-mode 1))
+  (evil-mode 1)
+  :chords (:map evil-insert-state-map
+                ("jj" . evil-normal-state))
+  )
 
 (use-package solarized-theme
   :ensure t
@@ -131,7 +138,7 @@
 
 (use-package projectile
   :ensure t
-  :bind ("C-x p" . projectile-command-map)
+  :bind ("C-c p" . projectile-command-map)
   :config
   (projectile-global-mode +1))
 
@@ -149,3 +156,10 @@
   :config
   (add-hook 'elm-mode-hook #'elm-oracle-setup-ac)
   (setq elm-foramt-on-save t))
+
+(use-package p4
+  :ensure t)
+
+(use-package neotree
+  :ensure t
+  :bind ([f8] . neotree-toggle))
