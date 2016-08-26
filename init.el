@@ -83,6 +83,13 @@
 ;; javascript indent
 (setq js-indent-level 2)
 
+;; exit with f9
+(global-unset-key (kbd "C-x C-c"))
+(global-set-key [f9] 'save-buffers-kill-emacs)
+
+;; load local inits
+(load "~/.emacs.d/local-init.el")
+
 (require 'use-package)
 
 (use-package use-package-chords
@@ -162,4 +169,11 @@
 
 (use-package neotree
   :ensure t
-  :bind ([f8] . neotree-toggle))
+  :bind ([f8] . neotree-toggle)
+  :config
+  (add-hook 'neotree-mode-hook
+            (lambda ()
+              (define-key evil-normal-state-local-map (kbd "TAB") 'neotree-enter)
+              (define-key evil-normal-state-local-map (kbd "SPC") 'neotree-enter)
+              (define-key evil-normal-state-local-map (kbd "q") 'neotree-hide)
+              (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter))))
