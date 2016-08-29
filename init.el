@@ -90,6 +90,9 @@
 ;; load local inits
 (load "~/.emacs.d/local-init.el")
 
+;; .h files to be treated as cpp code
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+
 (require 'use-package)
 
 (use-package use-package-chords
