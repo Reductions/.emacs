@@ -85,7 +85,7 @@
 
 ;; exit with f9
 (global-unset-key (kbd "C-x C-c"))
-(global-set-key [f9] 'save-buffers-kill-emacs)
+(global-set-key [f12] 'save-buffers-kill-emacs)
 
 ;; load local inits
 (load "~/.emacs.d/local-init.el")
