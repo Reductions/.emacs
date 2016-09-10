@@ -78,7 +78,7 @@
 (add-hook 'prog-mode-hook 'linum-mode)
 
 ;; white space display
-(add-hook 'prog-mode-hook 'whitespace-mode)
+;; (add-hook 'prog-mode-hook 'whitespace-mode)
 
 ;; javascript indent
 (setq js-indent-level 2)
@@ -109,9 +109,15 @@
   )
 
 (use-package solarized-theme
+  :disabled t
   :ensure t
   :config
   (load-theme 'solarized-dark t))
+
+(use-package heroku-theme
+  :ensure t
+  :config
+  (load-theme 'heroku t))
 
 (use-package magit
   :ensure t
@@ -151,6 +157,10 @@
   :bind ("C-c p" . projectile-command-map)
   :config
   (projectile-global-mode +1))
+
+(use-package aggressive-indent
+  :ensure t
+  :config (global-aggressive-indent-mode 1))
 
 (use-package powerline-evil
   :ensure t
