@@ -55,6 +55,7 @@
 
 ;; coursor you won't hide from me no more
 (set-cursor-color "red")
+(add-hook 'prog-mode-hook 'hl-line-mode)
 (setq default-frame-alist
       '((cursor-color . "red")))
 
