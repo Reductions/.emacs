@@ -18,7 +18,7 @@
 ;; the only kind of bell that I would listen to is "The Devision Bell"
 (setq ring-bell-function 'ignore)
 
-;; disable startup screen
+;; I have seen it too many time. It is no more.
 (setq inhibit-startup-screen t)
 
 ;; nice scrolling
@@ -38,10 +38,10 @@
 ;; bind eshell
 (global-set-key (kbd "C-x e") 'eshell)
 
-;; split window in two
+;; split window in two because two is better then onej
 (split-window-right)
 
-;; Prefer utf-8 encoding
+;; I don't care how do you talk to me as long as it is utf-8
 (prefer-coding-system 'utf-8)
 
 ;; Do not use tabs for indentation
@@ -68,6 +68,9 @@
 
 ;; disable auto save
 (setq auto-save-default nil)
+
+;; cut them all
+(set-default 'truncate-lines t)
 
 ;; some staff
 (global-set-key [f2] 'comment-region)
