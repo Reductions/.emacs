@@ -109,8 +109,8 @@
   :config
   (evil-mode 1)
   :chords (:map evil-insert-state-map
-                ("jj" . evil-normal-state))
-  )
+                ("jk" . evil-normal-state)
+                ("kj" . evil-normal-state)))
 
 (use-package solarized-theme
   :disabled t
@@ -163,13 +163,12 @@
   (projectile-global-mode +1))
 
 (use-package aggressive-indent
-  :ensure t
-  :config (global-aggressive-indent-mode 1))
+  :ensure t)
 
-(use-package powerline-evil
-  :ensure t
-  :config
-  (powerline-evil-center-color-theme))
+  (use-package powerline-evil
+    :ensure t
+    :config
+    (powerline-evil-center-color-theme))
 
 (use-package fic-mode
   :ensure t
@@ -180,6 +179,10 @@
   :config
   (add-hook 'elm-mode-hook #'elm-oracle-setup-ac)
   (setq elm-foramt-on-save t))
+
+(use-package dtrt-indent
+  :ensure t
+  :config (dtrt-indent-mode 1))
 
 (use-package p4
   :ensure t)
