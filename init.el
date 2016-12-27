@@ -12,6 +12,10 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 
+;; set transparency
+;; (set-frame-parameter (selected-frame) 'alpha '(99 100))
+;; (add-to-list 'default-frame-alist '(alpha 99 100))
+
 ;; disable blinking cursor
 (blink-cursor-mode -1)
 
@@ -32,8 +36,9 @@
 (size-indication-mode t)
 
 ;; making up my face
-(set-face-attribute 'default nil :font "Consolas")
+(set-face-attribute 'default nil :font "Droid Sans Mono")
 (set-face-attribute 'default (selected-frame) :height 109)
+
 
 ;; bind eshell
 (global-set-key (kbd "C-x e") 'eshell)
@@ -68,9 +73,6 @@
 
 ;; disable auto save
 (setq auto-save-default nil)
-
-;; cut them all
-(set-default 'truncate-lines t)
 
 ;; some staff
 (global-set-key [f2] 'comment-region)
@@ -118,10 +120,8 @@
   :config
   (load-theme 'solarized-dark t))
 
-(use-package heroku-theme
-  :ensure t
-  :config
-  (load-theme 'heroku t))
+(use-package atom-one-dark-theme
+  :ensure t)
 
 (use-package magit
   :ensure t
@@ -138,11 +138,6 @@
   :ensure t
   :config
   (ac-config-default))
-
-(use-package inf-ruby
-  :ensure t
-  :config
-  (add-hook 'ruby-mode-hook #'inf-ruby-minor-mode))
 
 (use-package smartparens
   :ensure t
@@ -165,10 +160,12 @@
 (use-package aggressive-indent
   :ensure t)
 
-  (use-package powerline-evil
-    :ensure t
-    :config
-    (powerline-evil-center-color-theme))
+(use-package spaceline
+  :ensure t
+  :config
+  (require 'spaceline-config)
+  (spaceline-spacemacs-theme)
+  (setq spaceline-highlight-face-func 'spaceline-highlight-face-evil-state))
 
 (use-package fic-mode
   :ensure t
@@ -187,13 +184,7 @@
 (use-package p4
   :ensure t)
 
-(use-package neotree
+(use-package go-mode
   :ensure t
-  :bind ([f8] . neotree-toggle)
-  :config
-  (add-hook 'neotree-mode-hook
-            (lambda ()
-              (define-key evil-normal-state-local-map (kbd "TAB") 'neotree-enter)
-              (define-key evil-normal-state-local-map (kbd "SPC") 'neotree-enter)
-              (define-key evil-normal-state-local-map (kbd "q") 'neotree-hide)
-              (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter))))
+  :init
+  (add-hook 'before-save-hook 'gofmt-before-save))
